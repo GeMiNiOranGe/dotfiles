@@ -1,14 +1,16 @@
 [alias]
-    log-simple = log --decorate --oneline --graph
-    log-compact = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
-    log-detailed = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-    log-full = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+    # Shout out to this answer: https://stackoverflow.com/a/34467298
+    log-simple = log --decorate --graph --oneline
+    log-compact = log --decorate --graph --abbrev-commit --format=tformat:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+    log-detailed = log --decorate --graph --abbrev-commit --format=tformat:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    log-full = log --decorate --graph --abbrev-commit --format=tformat:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)%an <%ae>%C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 
     log-simple-all = log-simple --all
     log-compact-all = log-compact --all
     log-detailed-all = log-detailed --all
     log-full-all = log-full --all
 
-    log-change = log --graph --name-status --format=format:'%C(red)%h %C(reset)(%cd) %C(green)%an %C(reset)%s %C(yellow)%d%C(reset)' --date=relative
-
-    log-change-all = log-change --all
+    log-simple-change-all = log-simple --name-status --date=relative --max-count=5 --all
+    log-compact-change-all = log-compact --name-status --date=relative --max-count=5 --all
+    log-detailed-change-all = log-detailed --name-status --date=relative --max-count=5 --all
+    log-full-change-all = log-full --name-status --date=relative --max-count=5 --all
